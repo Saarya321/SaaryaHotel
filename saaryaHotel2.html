@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saarya - A Boutique Hotel Experience</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8B4513;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8B4513;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image : url('file:///C:/Users/Mahima Malhotra/Downloads/home.jpeg'); 
+                     background-size: cover; 
+                     background-position: center; 
+                     position: relative;">
+                                    </div>;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #8B4513;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #8B4513;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #8B4513;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Rooms Section */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-image {
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #8B4513;
+        }
+
+        .room-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin-top: 1rem;
+        }
+
+        /* Amenities */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .amenity-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover {
+            background: #8B4513;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .amenity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #8B4513;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #8B4513;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+<a href="#home" class="logo-link">
+    <img src='file:///C:/Users/Mahima Malhotra/Downloads/logo.png' alt="Saarya Hotel Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+    <span class="logo-text">Saarya</span>
+</a>       
+
+<style>
+/* Update your existing .logo CSS with this: */
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Fallback text logo if image doesn't load */
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8B4513;
+    text-decoration: none;
+    display: none; /* Hidden by default, shows only if image fails */
+}
+
+/* Responsive design for mobile */
+@media (max-width: 900px) {
+    .logo {
+        height: 50px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+}
+
+</style>     <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Saarya</h1>
+            <p>Where Luxury Meets Authenticity</p>
+<a href="file:///C:/Users/Mahima Malhotra/Downloads/Tariff.jpeg" style="
+                    color: white;
+                    text-decoration: underline;
+                    text-decoration-color: rgba(255,255,255,0.6);
+                    text-underline-offset: 4px;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    line-height: 1.6;
+                    display: inline-block;
+                    max-width: 600px;
+                    text-align: center;
+                " onmouseover="
+                    this.style.color='#FFD700'; 
+                    this.style.textDecorationColor='#FFD700';
+                    this.style.textShadow='0 0 10px rgba(255,215,0,0.5)';
+                " 
+                   onmouseout="
+                    this.style.color='white'; 
+                    this.style.textDecorationColor='rgba(255,255,255,0.6)';
+                    this.style.textShadow='none';
+                "
+                   target="_blank">
+                    Unlock Exclusive rates and Curated packages designed for your ultimate comfort—click to explore.
+                </a>
+   <div style="margin: 2rem 0;">
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>A Boutique Experience</h2>
+        <div class="about-content fade-in">
+            <div class="about-text">
+                <p>Nestled in the heart of Jammu, Saarya offers an intimate boutique hotel experience that celebrates the rich cultural heritage  while providing modern luxury and comfort.</p>
+                
+                <p>Our carefully curated spaces blend traditional craftsmanship with contemporary design, creating an atmosphere where every guest feels the warmth of authentic hospitality. From our handpicked furnishings to our personalized service, every detail reflects our commitment to excellence.</p>
+                
+                <p>Experience the true essence of Jammu and Kashmir through our local partnerships, authentic cuisine, and guided cultural experiences that connect you with the soul of this magnificent region.</p>
+            </div>
+            <div class="about-image" style="background-image: url('file:///C:/Users/Mahima Malhotra/Downloads/home.jpeg'); 
+                     background-size: cover; 
+                     background-position: center; 
+                     position: relative;">
+                                    </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="section">
+        <h2>Thoughtfully Designed Accommodations</h2>
+        <div class="rooms-grid">
+            <div class="room-card fade-in">
+<div class="room-image" style="background-image: url('file:///C:/Users/Mahima Malhotra/Downloads/premium.jpeg'); 
+                     background-size: cover; 
+                     background-position: center; 
+                     position: relative;">
+                                    </div>
+
+                <div class="room-info">                    <h3>Premium Room</h3>
+                    <p>Contemporary comfort meets local charm. Queen-size bed, modern amenities, and artisanal touches throughout. Perfect for business and leisure travelers along with balcony view.</p>
+                    <div class="room-price">₹3,200/night</div>
+                </div>
+            </div>
+            <div class="room-card fade-in">
+<div class="room-image" style="background-image: url('file:///C:/Users/Mahima Malhotra/Downloads/deluxe.jpeg'); 
+                     background-size: cover; 
+                     background-position: center; 
+                     position: relative;">
+                                    </div>
+                <div class="room-info">
+                    <h3>Boutique Deluxe</h3>
+                    <p>Contemporary comfort meets local charm. Queen-size bed, modern amenities, and artisanal touches throughout. Perfect for business and leisure travelers.</p>
+                    <div class="room-price">₹3,000/night</div>
+                </div>
+
+            </div>
+        </div>
+    
+ 
+
+</section>
+            <!-- Amenities Section -->
+    <section id="amenities" class="section">
+        <h2>Curated Experiences</h2>
+        <div class="amenities-grid">
+          
+<div class="amenity-item fade-in">
+                <div class="amenity-icon">🍽️</div>
+                <h3> In-House Kitchen Service</h3>
+<p>While we don’t have a restaurant, our dedicated kitchen team is happy to prepare fresh, delicious meals just for you.</p>            </div>
+            <div class="amenity-item fade-in">
+                <div class="amenity-icon">🏔️</div>
+                <h3>Cultural Concierge</h3>
+                <p>Personalized local experiences and guided tours to discover hidden gems</p>
+            </div>
+            <div class="amenity-item fade-in">
+                <div class="amenity-icon">📶</div>
+                <h3>Modern Connectivity</h3>
+                <p>High-speed WiFi,Electronic Card Key Locks, Satellite TV Channels, 24-hours Power Backup ,    Elevator Access throughout</p>
+            </div>
+            <div class="amenity-item fade-in">
+                <div class="amenity-icon">🧺</div>
+                <h3>Daily Housekeeping</h3>
+                <p>Enjoy a clean and tidy stay with our daily housekeeping service, ensuring your room stays fresh every day.
+
+</p>
+            </div>
+            <div class="amenity-item fade-in">
+                <div class="amenity-icon">🔐</div>
+                <h3>24/7 Front Desk Support</h3>
+                <p>Our friendly team is here to help around the clock—for check-ins, questions, or anything else you may need.
+
+</p>
+            </div>
+<div class="amenity-item fade-in">
+                <div class="amenity-icon">☕🍾🧃</div>
+                <h3>24/7 In-room facilities</h3>
+                <p>Includes an electric kettle, mini bar, and personal refrigerator for your comfort and convenience
+
+</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Connect With Us</h2>
+        <div class="contact-content">
+            <div class="contact-form fade-in">
+                <h3>Reserve Your Experience</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Check-in Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Check-out Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Requests</label>
+                        <textarea rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Inquiry</button>
+                </form>
+            </div>
+            <div class="contact-info fade-in">
+                <h3>Visit Saarya</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Address</strong><br>
+                        Partap Lane,Raghunath Bazar, Jammu<br>
+                        Jammu & Kashmir, India
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <strong>Reservations</strong><br>
+                          +91 9419 186 863
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email</strong><br>
+                        reservations@saaryahotel.com<br>
+                                            </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🕐</span>
+                    <div>
+                        <strong>Reception Hours</strong><br>
+                        24/7 Front Desk Service<br>
+                        Concierge: 6:00 AM - 11:00 PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Saarya - A Boutique Hotel</h3>
+           
+            <p>&copy; 2025 Saarya Hotel. All rights reserved. | Crafted with care in the heart of Jammu</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours to confirm your reservation.');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
